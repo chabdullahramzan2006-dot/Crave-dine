@@ -1,0 +1,118 @@
+@import "tailwindcss";
+
+:root {
+  --cd-red: #9b1c1c;
+  --cd-red-deep: #6f1212;
+  --cd-red-soft: #c43a3a;
+  --cd-yellow: #f5c518;
+  --cd-yellow-soft: #ffe566;
+  --cd-cream: #fff8ec;
+  --cd-ink: #140f0f;
+  --cd-muted: #5c5048;
+  --cd-white: #ffffff;
+  --cd-surface: #1a1212;
+  --background: var(--cd-cream);
+  --foreground: var(--cd-ink);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-cd-red: var(--cd-red);
+  --color-cd-red-deep: var(--cd-red-deep);
+  --color-cd-red-soft: var(--cd-red-soft);
+  --color-cd-yellow: var(--cd-yellow);
+  --color-cd-yellow-soft: var(--cd-yellow-soft);
+  --color-cd-cream: var(--cd-cream);
+  --color-cd-ink: var(--cd-ink);
+  --color-cd-muted: var(--cd-muted);
+  --color-cd-white: var(--cd-white);
+  --color-cd-surface: var(--cd-surface);
+  --font-display: var(--font-display);
+  --font-sans: var(--font-body);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  background:
+    radial-gradient(ellipse 80% 50% at 10% -10%, rgba(245, 197, 24, 0.18), transparent 55%),
+    radial-gradient(ellipse 60% 40% at 100% 0%, rgba(155, 28, 28, 0.12), transparent 50%),
+    linear-gradient(180deg, #fffaf0 0%, #fff8ec 40%, #f7efe0 100%);
+  color: var(--foreground);
+  font-family: var(--font-body), system-ui, sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--cd-yellow);
+  color: var(--cd-ink);
+}
+
+.font-display {
+  font-family: var(--font-display), Georgia, serif;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.section-pad {
+  @apply px-4 sm:px-6 lg:px-8;
+}
+
+.container-site {
+  @apply mx-auto w-full max-w-7xl;
+}
+
+.btn-primary {
+  @apply inline-flex items-center justify-center gap-2 rounded-full bg-cd-red px-6 py-3.5 text-sm font-semibold tracking-wide text-white shadow-[0_10px_24px_rgba(155,28,28,0.22)] transition hover:bg-cd-red-deep hover:shadow-[0_14px_28px_rgba(155,28,28,0.28)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cd-yellow;
+}
+
+.btn-secondary {
+  @apply inline-flex items-center justify-center gap-2 rounded-full border-2 border-cd-yellow bg-cd-yellow px-6 py-3.5 text-sm font-semibold tracking-wide text-cd-ink transition hover:bg-cd-yellow-soft focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cd-red;
+}
+
+.btn-ghost {
+  @apply inline-flex items-center justify-center gap-2 rounded-full border border-white/40 bg-white/10 px-6 py-3.5 text-sm font-semibold tracking-wide text-white backdrop-blur transition hover:bg-white/20;
+}
+
+.input-field {
+  @apply w-full rounded-2xl border border-black/10 bg-white px-4 py-3 text-sm text-cd-ink outline-none transition placeholder:text-cd-muted/70 focus:border-cd-red focus:ring-2 focus:ring-cd-red/20;
+}
+
+/* Keep scroll working, hide scrollbar UI */
+.scrollbar-thin,
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  overflow-x: auto;
+}
+
+.scrollbar-thin::-webkit-scrollbar,
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+  background: transparent;
+}
+
+@keyframes steam {
+  0% { transform: translateY(0) scale(1); opacity: 0.55; }
+  100% { transform: translateY(-18px) scale(1.2); opacity: 0; }
+}
+
+.steam {
+  animation: steam 1.8s ease-out infinite;
+}
+
+.steam:nth-child(2) { animation-delay: 0.35s; }
+.steam:nth-child(3) { animation-delay: 0.7s; }
