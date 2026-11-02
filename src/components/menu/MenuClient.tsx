@@ -49,7 +49,10 @@ export default function MenuClient({
   }, [active, query, filtered, categories]);
 
   const showDeals = active === "all" || active === "deals";
-  const visibleDeals = deals.slice(0, active === "deals" ? deals.length : 8);
+  const visibleDeals = deals.slice(
+    0,
+    active === "deals" ? deals.length : 4
+  );
 
   return (
     <div className="bg-[#fbf7f0]">
@@ -65,12 +68,12 @@ export default function MenuClient({
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#1a0f0f]/92 via-[#1a0f0f]/75 to-[#1a0f0f]/45" />
         </div>
-        <div className="container-site section-pad relative py-20 pt-28 sm:py-24 sm:pt-32">
+        <div className="container-site section-pad relative py-10 pt-[5.5rem] sm:py-16 sm:pt-28 md:pt-[7.25rem] lg:py-20">
           <motion.p
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={spring}
-            className="text-[11px] font-semibold uppercase tracking-[0.35em] text-cd-yellow"
+            className="text-[10px] font-semibold uppercase tracking-[0.3em] text-cd-yellow sm:text-[11px] sm:tracking-[0.35em]"
           >
             Order Online
           </motion.p>
@@ -78,7 +81,7 @@ export default function MenuClient({
             initial={{ opacity: 0, y: 22 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ ...spring, delay: 0.06 }}
-            className="mt-3 font-display text-4xl text-white sm:text-5xl lg:text-6xl"
+            className="mt-2 font-display text-3xl text-white sm:mt-3 sm:text-5xl lg:text-6xl"
           >
             Our Menu
           </motion.h1>
@@ -86,7 +89,7 @@ export default function MenuClient({
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ ...spring, delay: 0.12 }}
-            className="mt-3 max-w-lg text-sm text-white/70 sm:text-base"
+            className="mt-2 max-w-lg text-sm text-white/70 sm:mt-3 sm:text-base"
           >
             Pizzas, burgers, wraps, pasta, shakes & special deals — fresh from
             Crave Dine.
@@ -94,21 +97,21 @@ export default function MenuClient({
         </div>
       </section>
 
-      <div className="sticky top-[4.5rem] z-30 border-b border-black/5 bg-[#fbf7f0]/95 backdrop-blur-xl lg:top-20">
-        <div className="container-site section-pad py-3 sm:py-4">
-          <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:gap-4">
+      <div className="sticky top-[3.85rem] z-30 border-b border-black/5 bg-[#fbf7f0]/97 backdrop-blur-xl sm:top-[4.5rem] md:top-[calc(2rem+4.5rem)]">
+        <div className="container-site section-pad py-2.5 sm:py-3.5">
+          <div className="flex flex-col gap-2.5 lg:flex-row lg:items-center lg:gap-4">
             <div className="relative w-full max-w-sm shrink-0">
-              <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-cd-muted" />
+              <Search className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-cd-muted" />
               <input
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search menu…"
-                className="w-full rounded-full border border-black/8 bg-white py-3 pl-11 pr-4 text-sm outline-none transition focus:border-cd-red focus:ring-2 focus:ring-cd-red/15"
+                className="w-full rounded-full border border-black/8 bg-white py-2.5 pl-10 pr-4 text-sm outline-none transition focus:border-cd-red focus:ring-2 focus:ring-cd-red/15 sm:py-3 sm:pl-11"
               />
             </div>
 
             <div className="scrollbar-hide min-w-0 w-full flex-1 overflow-x-auto overscroll-x-contain touch-pan-x">
-              <div className="flex w-max items-center gap-2 py-1 pr-2">
+              <div className="flex w-max items-center gap-1.5 py-0.5 pr-2 sm:gap-2">
                 <FilterChip
                   active={active === "all"}
                   onClick={() => setActive("all")}
@@ -133,27 +136,27 @@ export default function MenuClient({
         </div>
       </div>
 
-      <div className="container-site section-pad py-10 sm:py-12">
+      <div className="container-site section-pad py-6 sm:py-10 lg:py-12">
         {showDeals && (
           <motion.section
             initial={{ opacity: 0, y: 28 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.15 }}
             transition={spring}
-            className="mb-14"
+            className="mb-8 sm:mb-12 lg:mb-14"
           >
-            <div className="mb-6 flex items-end justify-between gap-4">
+            <div className="mb-4 flex items-end justify-between gap-4 sm:mb-6">
               <div>
                 <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-cd-red">
                   Combos
                 </p>
-                <h2 className="mt-1 font-display text-3xl text-cd-ink">
+                <h2 className="mt-1 font-display text-2xl text-cd-ink sm:text-3xl">
                   Special Deals
                 </h2>
               </div>
             </div>
 
-            <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 xl:grid-cols-4">
               {visibleDeals.map((deal, index) => (
                 <motion.div
                   key={deal.id}
@@ -223,7 +226,7 @@ export default function MenuClient({
                 </p>
               </motion.div>
             ) : (
-              <div className="space-y-14">
+              <div className="space-y-8 sm:space-y-12 lg:space-y-14">
                 {grouped.map((group) => (
                   <motion.section
                     key={group.slug || "list"}
@@ -233,18 +236,18 @@ export default function MenuClient({
                     transition={spring}
                   >
                     {group.name ? (
-                      <div className="mb-6 flex items-center gap-4">
-                        <h2 className="font-display text-2xl text-cd-ink sm:text-3xl">
+                      <div className="mb-4 flex items-center gap-3 sm:mb-6 sm:gap-4">
+                        <h2 className="font-display text-xl text-cd-ink sm:text-3xl">
                           {group.name}
                         </h2>
                         <div className="h-px flex-1 bg-cd-red/15" />
-                        <span className="text-xs font-semibold text-cd-muted">
-                          {group.items.length} items
+                        <span className="shrink-0 text-xs font-semibold text-cd-muted">
+                          {group.items.length}
                         </span>
                       </div>
                     ) : null}
 
-                    <div className="grid auto-rows-fr gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 xl:grid-cols-4">
+                    <div className="grid auto-rows-fr grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 xl:grid-cols-4">
                       {group.items.map((item, index) => (
                         <motion.div
                           key={item.id}
@@ -286,7 +289,7 @@ function FilterChip({
       onClick={onClick}
       whileTap={{ scale: 0.96 }}
       transition={spring}
-      className={`relative isolate shrink-0 overflow-visible rounded-full px-4 py-2 text-sm font-semibold transition ${
+      className={`relative isolate shrink-0 overflow-visible rounded-full px-3 py-1.5 text-xs font-semibold transition sm:px-4 sm:py-2 sm:text-sm ${
         active
           ? "text-white"
           : "bg-white text-cd-ink ring-1 ring-black/8 hover:ring-cd-red/30"
