@@ -46,23 +46,35 @@ export default function FoodCard({ item }: { item: MenuItem }) {
           {item.description}
         </p>
 
-        <div className="mt-3 sm:mt-4 sm:min-h-[2.4rem]">
+        <div className="mt-3 sm:mt-4 sm:min-h-[2.75rem]">
           {multiSize ? (
-            <div className="flex gap-1.5">
-              {options.map((opt) => (
-                <button
-                  key={opt.size}
-                  type="button"
-                  onClick={() => setPortion(opt.size)}
-                  className={`min-w-[2.4rem] rounded-full px-3 py-1.5 text-xs font-bold transition ${
-                    portion === opt.size
-                      ? "bg-cd-red text-white"
-                      : "bg-[#f6f0e6] text-cd-muted hover:text-cd-ink"
-                  }`}
-                >
-                  {opt.label}
-                </button>
-              ))}
+            <div className="flex gap-2">
+              {options.map((opt) => {
+                const selected = portion === opt.size;
+                const fullLabel =
+                  opt.size === "small"
+                    ? "Small"
+                    : opt.size === "medium"
+                      ? "Medium"
+                      : opt.size === "large"
+                        ? "Large"
+                        : "Regular";
+                return (
+                  <button
+                    key={opt.size}
+                    type="button"
+                    onClick={() => setPortion(opt.size)}
+                    className={`inline-flex min-h-11 flex-1 items-center justify-center rounded-xl border px-2 py-2.5 text-sm font-bold transition sm:min-h-0 sm:min-w-[3rem] sm:flex-none sm:rounded-full sm:px-3.5 sm:py-2 sm:text-xs ${
+                      selected
+                        ? "border-cd-red bg-cd-red text-white"
+                        : "border-[#e8dcc8] bg-[#f8f2e8] text-cd-ink hover:border-cd-red/40"
+                    }`}
+                  >
+                    <span className="sm:hidden">{fullLabel}</span>
+                    <span className="hidden sm:inline">{opt.label}</span>
+                  </button>
+                );
+              })}
             </div>
           ) : null}
         </div>
@@ -70,7 +82,7 @@ export default function FoodCard({ item }: { item: MenuItem }) {
         <button
           type="button"
           onClick={() => addItem(item, portion)}
-          className="mt-auto inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-cd-red px-4 py-3 text-sm font-semibold text-white transition hover:bg-cd-red-deep"
+          className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-cd-red px-4 py-3.5 text-sm font-semibold text-white transition hover:bg-cd-red-deep sm:mt-auto sm:py-3"
         >
           <Plus className="h-4 w-4" />
           Add to Cart
