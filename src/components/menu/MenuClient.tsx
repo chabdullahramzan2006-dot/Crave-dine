@@ -226,46 +226,81 @@ export default function MenuClient({
                 </p>
               </motion.div>
             ) : (
-              <div className="space-y-8 sm:space-y-12 lg:space-y-14">
-                {grouped.map((group) => (
-                  <motion.section
-                    key={group.slug || "list"}
-                    initial={{ opacity: 0, y: 32 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.12 }}
-                    transition={spring}
-                  >
-                    {group.name ? (
-                      <div className="mb-4 flex items-center gap-3 sm:mb-6 sm:gap-4">
-                        <h2 className="font-display text-xl text-cd-ink sm:text-3xl">
-                          {group.name}
-                        </h2>
-                        <div className="h-px flex-1 bg-cd-red/15" />
-                        <span className="shrink-0 text-xs font-semibold text-cd-muted">
-                          {group.items.length}
-                        </span>
-                      </div>
-                    ) : null}
+              <>
+                {/* Mobile demo: only 9 items */}
+                <div className="lg:hidden">
+                  <div className="mb-4 flex items-center gap-3">
+                    <h2 className="font-display text-xl text-cd-ink">Menu</h2>
+                    <div className="h-px flex-1 bg-cd-red/15" />
+                    <span className="shrink-0 text-xs font-semibold text-cd-muted">
+                      Demo · 9
+                    </span>
+                  </div>
+                  <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-5">
+                    {filtered.slice(0, 9).map((item, index) => (
+                      <motion.div
+                        key={item.id}
+                        initial={{ opacity: 0, y: 24 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.15 }}
+                        transition={{
+                          ...spring,
+                          delay: Math.min(index * 0.04, 0.28),
+                        }}
+                      >
+                        <FoodCard item={item} />
+                      </motion.div>
+                    ))}
+                  </div>
+                  {filtered.length > 9 && (
+                    <p className="mt-6 text-center text-sm text-cd-muted">
+                      Demo preview — full menu on larger screens.
+                    </p>
+                  )}
+                </div>
 
-                    <div className="grid auto-rows-fr grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 xl:grid-cols-4">
-                      {group.items.map((item, index) => (
-                        <motion.div
-                          key={item.id}
-                          initial={{ opacity: 0, y: 24 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          viewport={{ once: true, amount: 0.15 }}
-                          transition={{
-                            ...spring,
-                            delay: Math.min(index * 0.04, 0.28),
-                          }}
-                        >
-                          <FoodCard item={item} />
-                        </motion.div>
-                      ))}
-                    </div>
-                  </motion.section>
-                ))}
-              </div>
+                {/* Large screens: full menu */}
+                <div className="hidden space-y-8 sm:space-y-12 lg:block lg:space-y-14">
+                  {grouped.map((group) => (
+                    <motion.section
+                      key={group.slug || "list"}
+                      initial={{ opacity: 0, y: 32 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, amount: 0.12 }}
+                      transition={spring}
+                    >
+                      {group.name ? (
+                        <div className="mb-4 flex items-center gap-3 sm:mb-6 sm:gap-4">
+                          <h2 className="font-display text-xl text-cd-ink sm:text-3xl">
+                            {group.name}
+                          </h2>
+                          <div className="h-px flex-1 bg-cd-red/15" />
+                          <span className="shrink-0 text-xs font-semibold text-cd-muted">
+                            {group.items.length}
+                          </span>
+                        </div>
+                      ) : null}
+
+                      <div className="grid auto-rows-fr grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 xl:grid-cols-4">
+                        {group.items.map((item, index) => (
+                          <motion.div
+                            key={item.id}
+                            initial={{ opacity: 0, y: 24 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, amount: 0.15 }}
+                            transition={{
+                              ...spring,
+                              delay: Math.min(index * 0.04, 0.28),
+                            }}
+                          >
+                            <FoodCard item={item} />
+                          </motion.div>
+                        ))}
+                      </div>
+                    </motion.section>
+                  ))}
+                </div>
+              </>
             )}
           </>
         )}
