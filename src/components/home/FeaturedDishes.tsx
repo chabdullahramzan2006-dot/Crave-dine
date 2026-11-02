@@ -13,10 +13,11 @@ export default function FeaturedDishes({ items }: { items: MenuItem[] }) {
 
       <div className="container-site relative">
         <motion.div
-          initial={{ opacity: 0, y: 18 }}
+          initial={{ opacity: 0, y: 22 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-12 flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between"
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ type: "spring", stiffness: 220, damping: 24 }}
+          className="mb-10 flex flex-col gap-5 sm:mb-12 sm:flex-row sm:items-end sm:justify-between"
         >
           <div className="max-w-xl">
             <div className="mb-3 flex items-center gap-3">
@@ -42,9 +43,22 @@ export default function FeaturedDishes({ items }: { items: MenuItem[] }) {
           </Link>
         </motion.div>
 
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {items.slice(0, 8).map((item) => (
-            <FoodCard key={item.id} item={item} />
+        <div className="grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4">
+          {items.slice(0, 8).map((item, index) => (
+            <motion.div
+              key={item.id}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{
+                type: "spring",
+                stiffness: 240,
+                damping: 24,
+                delay: Math.min(index * 0.05, 0.3),
+              }}
+            >
+              <FoodCard item={item} />
+            </motion.div>
           ))}
         </div>
       </div>

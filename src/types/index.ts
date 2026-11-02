@@ -99,4 +99,5 @@ export interface Deal {
   price: number;
   badge: string;
   group: "single" | "two" | "family" | "special";
+  image: string;
 }

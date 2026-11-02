@@ -38,19 +38,19 @@ export default function Hero() {
           </motion.div>
 
           <motion.h1
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
-            className="font-display text-[clamp(3.75rem,12vw,7.5rem)] leading-[0.88] tracking-[0.02em] text-white drop-shadow-[0_6px_24px_rgba(0,0,0,0.45)]"
+            transition={{ type: "spring", stiffness: 180, damping: 22, delay: 0.08 }}
+            className="font-display text-[clamp(3.4rem,11vw,7.5rem)] leading-[0.88] tracking-[0.02em] text-white drop-shadow-[0_6px_24px_rgba(0,0,0,0.45)]"
           >
             CRAVE
             <span className="block text-cd-yellow">DINE</span>
           </motion.h1>
 
           <motion.p
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, delay: 0.22 }}
+            transition={{ type: "spring", stiffness: 220, damping: 24, delay: 0.2 }}
             className="mt-5 font-display text-2xl text-white sm:text-3xl"
           >
             Your Taste, Our Passion.
@@ -59,8 +59,8 @@ export default function Hero() {
           <motion.p
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, delay: 0.32 }}
-            className="mt-4 max-w-md text-base leading-relaxed text-white/80"
+            transition={{ type: "spring", stiffness: 220, damping: 24, delay: 0.3 }}
+            className="mt-4 max-w-md text-sm leading-relaxed text-white/80 sm:text-base"
           >
             Hot pizzas, juicy burgers, wraps & shakes — order online or visit us
             on Multan Road.
@@ -69,22 +69,26 @@ export default function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, delay: 0.42 }}
-            className="mt-9 flex flex-wrap gap-3"
+            transition={{ type: "spring", stiffness: 220, damping: 24, delay: 0.4 }}
+            className="mt-8 flex flex-wrap gap-3 sm:mt-9"
           >
-            <Link
-              href="/menu"
-              className="group inline-flex items-center gap-2 rounded-full bg-cd-yellow px-8 py-4 text-sm font-bold tracking-wide text-cd-ink shadow-[0_12px_30px_rgba(245,197,24,0.4)] transition hover:bg-cd-yellow-soft"
-            >
-              Explore Menu
-              <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
-            </Link>
-            <Link
-              href="/checkout"
-              className="inline-flex items-center gap-2 rounded-full border-2 border-white/70 bg-white/10 px-8 py-4 text-sm font-semibold tracking-wide text-white backdrop-blur-sm transition hover:bg-white hover:text-cd-ink"
-            >
-              Order Now
-            </Link>
+            <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
+              <Link
+                href="/menu"
+                className="group inline-flex items-center gap-2 rounded-full bg-cd-yellow px-7 py-3.5 text-sm font-bold tracking-wide text-cd-ink shadow-[0_12px_30px_rgba(245,197,24,0.4)] transition hover:bg-cd-yellow-soft sm:px-8 sm:py-4"
+              >
+                Explore Menu
+                <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
+              </Link>
+            </motion.div>
+            <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
+              <Link
+                href="/checkout"
+                className="inline-flex items-center gap-2 rounded-full border-2 border-white/70 bg-white/10 px-7 py-3.5 text-sm font-semibold tracking-wide text-white backdrop-blur-sm transition hover:bg-white hover:text-cd-ink sm:px-8 sm:py-4"
+              >
+                Order Now
+              </Link>
+            </motion.div>
           </motion.div>
         </div>
       </div>

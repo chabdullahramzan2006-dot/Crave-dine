@@ -44,6 +44,52 @@ export const categoryImages = {
   hero: "https://images.unsplash.com/photo-1604382355076-af4b0eb60143?auto=format&fit=crop&w=2400&q=90",
 };
 
+/** Distinct food photos for deal cards */
+export const dealImages = {
+  burgerDrink:
+    "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=1000&q=80",
+  zinger:
+    "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1000&q=80",
+  cheeseBurger:
+    "https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?auto=format&fit=crop&w=1000&q=80",
+  clubSandwich:
+    "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=1000&q=80",
+  pizzaDrink:
+    "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1000&q=80",
+  chapliFries:
+    "https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?auto=format&fit=crop&w=1000&q=80",
+  grillSandwich:
+    "https://images.unsplash.com/photo-1481070414801-51fd732d7184?auto=format&fit=crop&w=1000&q=80",
+  pizzaBurger:
+    "https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?auto=format&fit=crop&w=1000&q=80",
+  shawarma:
+    "https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&w=1000&q=80",
+  parathaRoll:
+    "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=1000&q=80",
+  duoBurgers:
+    "https://images.unsplash.com/photo-1553979459-d2229ba7433b?auto=format&fit=crop&w=1000&q=80",
+  pastaSandwich:
+    "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?auto=format&fit=crop&w=1000&q=80",
+  pizzaBurgers:
+    "https://images.unsplash.com/photo-1574071318508-1cdbab80d264?auto=format&fit=crop&w=1000&q=80",
+  familyPizza:
+    "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=1000&q=80",
+  pizzaFries:
+    "https://images.unsplash.com/photo-1571407970349-048e9f1d1955?auto=format&fit=crop&w=1000&q=80",
+  twoPizzas:
+    "https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?auto=format&fit=crop&w=1000&q=80",
+  feast:
+    "https://images.unsplash.com/photo-1506354666786-959d6d497f1a?auto=format&fit=crop&w=1000&q=80",
+  birthday:
+    "https://images.unsplash.com/photo-1558636508-e0db3814bd1d?auto=format&fit=crop&w=1000&q=80",
+  wingsPizza:
+    "https://images.unsplash.com/photo-1527477396000-e27173b28bd0?auto=format&fit=crop&w=1000&q=80",
+  nuggetsPizza:
+    "https://images.unsplash.com/photo-1565299507177-b0ac66763828?auto=format&fit=crop&w=1000&q=80",
+  megaFeast:
+    "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1000&q=80",
+};
+
 function item(
   partial: Omit<MenuItem, "available" | "price_half" | "price_small" | "price_medium" | "price_large"> &
     Partial<Pick<MenuItem, "available" | "price_half" | "price_small" | "price_medium" | "price_large">>
@@ -569,6 +615,7 @@ export const deals: Deal[] = [
     price: 400,
     badge: "Solo",
     group: "single",
+    image: dealImages.burgerDrink,
   },
   {
     id: "deal-s2",
@@ -578,6 +625,7 @@ export const deals: Deal[] = [
     price: 450,
     badge: "Solo",
     group: "single",
+    image: dealImages.zinger,
   },
   {
     id: "deal-s3",
@@ -587,6 +635,7 @@ export const deals: Deal[] = [
     price: 550,
     badge: "Solo",
     group: "single",
+    image: dealImages.cheeseBurger,
   },
   {
     id: "deal-s4",
@@ -596,6 +645,7 @@ export const deals: Deal[] = [
     price: 700,
     badge: "Solo",
     group: "single",
+    image: dealImages.clubSandwich,
   },
   {
     id: "deal-s5",
@@ -605,6 +655,7 @@ export const deals: Deal[] = [
     price: 700,
     badge: "Solo",
     group: "single",
+    image: dealImages.pizzaDrink,
   },
   {
     id: "deal-s6",
@@ -614,6 +665,7 @@ export const deals: Deal[] = [
     price: 800,
     badge: "Solo",
     group: "single",
+    image: dealImages.chapliFries,
   },
   {
     id: "deal-s7",
@@ -623,6 +675,7 @@ export const deals: Deal[] = [
     price: 900,
     badge: "Solo",
     group: "single",
+    image: dealImages.grillSandwich,
   },
   {
     id: "deal-s8",
@@ -632,6 +685,7 @@ export const deals: Deal[] = [
     price: 1100,
     badge: "Solo",
     group: "single",
+    image: dealImages.pizzaBurger,
   },
   {
     id: "deal-t1",
@@ -641,6 +695,7 @@ export const deals: Deal[] = [
     price: 500,
     badge: "Duo",
     group: "two",
+    image: dealImages.shawarma,
   },
   {
     id: "deal-t2",
@@ -650,6 +705,7 @@ export const deals: Deal[] = [
     price: 700,
     badge: "Duo",
     group: "two",
+    image: dealImages.parathaRoll,
   },
   {
     id: "deal-t3",
@@ -659,6 +715,7 @@ export const deals: Deal[] = [
     price: 850,
     badge: "Duo",
     group: "two",
+    image: dealImages.duoBurgers,
   },
   {
     id: "deal-t4",
@@ -668,6 +725,7 @@ export const deals: Deal[] = [
     price: 1000,
     badge: "Duo",
     group: "two",
+    image: dealImages.pastaSandwich,
   },
   {
     id: "deal-t5",
@@ -677,6 +735,7 @@ export const deals: Deal[] = [
     price: 1350,
     badge: "Duo",
     group: "two",
+    image: dealImages.pizzaBurgers,
   },
   {
     id: "deal-f1",
@@ -686,6 +745,7 @@ export const deals: Deal[] = [
     price: 1200,
     badge: "Family",
     group: "family",
+    image: dealImages.familyPizza,
   },
   {
     id: "deal-f2",
@@ -695,6 +755,7 @@ export const deals: Deal[] = [
     price: 1600,
     badge: "Family",
     group: "family",
+    image: dealImages.pizzaFries,
   },
   {
     id: "deal-f3",
@@ -704,6 +765,7 @@ export const deals: Deal[] = [
     price: 2500,
     badge: "Family",
     group: "family",
+    image: dealImages.twoPizzas,
   },
   {
     id: "deal-f4",
@@ -713,6 +775,7 @@ export const deals: Deal[] = [
     price: 3500,
     badge: "Family",
     group: "family",
+    image: dealImages.feast,
   },
   {
     id: "deal-f5",
@@ -722,6 +785,7 @@ export const deals: Deal[] = [
     price: 4500,
     badge: "Birthday",
     group: "family",
+    image: dealImages.birthday,
   },
   {
     id: "deal-c1",
@@ -731,6 +795,7 @@ export const deals: Deal[] = [
     price: 1200,
     badge: "Special",
     group: "special",
+    image: dealImages.wingsPizza,
   },
   {
     id: "deal-c2",
@@ -740,6 +805,7 @@ export const deals: Deal[] = [
     price: 1800,
     badge: "Special",
     group: "special",
+    image: dealImages.nuggetsPizza,
   },
   {
     id: "deal-c3",
@@ -749,6 +815,7 @@ export const deals: Deal[] = [
     price: 3200,
     badge: "Special",
     group: "special",
+    image: dealImages.twoPizzas,
   },
   {
     id: "deal-c4",
@@ -758,5 +825,6 @@ export const deals: Deal[] = [
     price: 6000,
     badge: "Mega",
     group: "special",
+    image: dealImages.megaFeast,
   },
 ];
